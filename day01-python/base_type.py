@@ -15,7 +15,7 @@ def sub(a, b):
     return a - b
 
 
-# 声明main方法
+# 声明main方法 kkk
 if __name__ == '__main__':
     # 调用加法add 传入参数1,2 返回加法得值
     # result = add(1, 2)
