@@ -8,7 +8,8 @@ def list_bianli():
 def chengfabiao1():
     for i in range(1,10):
         for j in range(1,i+1):
-            print('%s * %s = %s' %(j,i,i*j),end = ' ')
+            # 2为了对齐，代表s最小为两位宽度，s代表占位符，%代表格式化，后面跟格式形式
+            print('%2s * %2s = %2s' %(j,i,i*j),end = ' ')
         print(' ')
 #九九乘法表倒序
 def chengfabiao2():
@@ -63,12 +64,8 @@ def sum_test1(aint,bint):
     print(sum)
 # 方法二 求两个参数之间偶数的和，两个参数都包含
 def sum_test2(aint,bint):
-    if aint<bint :
-        a = aint
-        b = bint
-    else:
-        a = bint
-        b = aint
+    a = aint if aint < bint else bint
+    b = bint if aint < bint else aint
     sum = 0
     for i in range(a,b+1):
         if i%2 == 0:
@@ -94,12 +91,9 @@ def sum_test3(aint,bint):
     print(sum)
 # 方法二 求两个参数之间偶数的和，两个参数不包含的
 def sum_test4(aint,bint):
-    if aint<bint :
-        a = aint
-        b = bint
-    else:
-        a = bint
-        b = aint
+    # 三元表达式优化：a = A if boolean else B boolean为真则a=A 为假则a=B
+    a = aint if aint < bint else bint
+    b = bint if aint < bint else aint
     sum = 0
     for i in range(a+1,b):
         if i%2 == 0:
@@ -109,4 +103,4 @@ def sum_test4(aint,bint):
     print(sum)
 
 if __name__ == '__main__':
-    sum_test2(11,3)
+    sum_test4(8,2)
