@@ -64,5 +64,7 @@ def while7():
             break
         else:
             test.append(x)
+    print(test)
 if __name__ == '__main__':
+    while7()
     pass
