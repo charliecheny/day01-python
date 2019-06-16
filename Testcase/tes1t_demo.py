@@ -12,7 +12,7 @@ request = Request.Request()
 myToken = ''
 head2 = {'Authorization' : myToken}
 list_data0 = []
-
+url="http://192.168.60.125:8080"
 # @allure.severity("critical")
 # 优先级，包含blocker, critical, normal, minor, trivial 几个不同的等级
 @allure.feature("功能模块")
@@ -24,7 +24,7 @@ class TestShoppingTrolley(object):
                              ids=['成功',"密码错误","用户名错误"])
     def test_login(self,pwd,name,msg):
         data = {"password": pwd, "username": name}
-        post_request = request.post_request("http://192.168.60.132:8080/admin/login", json=data)
+        post_request = request.post_request(url=url+"/admin/login", json=data)
         assertions.assert_code(post_request.status_code, 200)
         respJson = post_request.json()
         assertions.assert_in_text(respJson["message"],msg)
@@ -35,7 +35,7 @@ class TestShoppingTrolley(object):
         global head2
         myToken = tokenHead + tokenBody
         head2 = {'Authorization': myToken}
-        get = request.get_request(url='http://192.168.60.132:8080/admin/info', headers=head2)
+        get = request.get_request(url=url+'/admin/info', headers=head2)
         assertions.assert_code(get.status_code, 200)
 
 
@@ -43,7 +43,7 @@ class TestShoppingTrolley(object):
     def test_info(self):
         # global myToken
         # head2 = {'Authorization': myToken}
-        get = request.get_request(url='http://192.168.60.132:8080/admin/info', headers=head2)
+        get = request.get_request(url=url+'/admin/info', headers=head2)
         headers = get.request.headers
         print(headers)
         assertions.assert_code(get.status_code, 200)
@@ -53,7 +53,7 @@ class TestShoppingTrolley(object):
         # global myToken
         # head2 = {'Authorization': myToken}
         param1 = {'status': 1, 'pageNum': 1, 'pageSize': 5}
-        get = request.get_request(url='http://192.168.60.132:8080/order/list',params = param1, headers=head2)
+        get = request.get_request(url=url+'/order/list',params = param1, headers=head2)
         list_get = get.text
         print(list_get)
         assertions.assert_code(get.status_code, 200)
@@ -67,7 +67,7 @@ class TestShoppingTrolley(object):
         # head2 = {'Authorization': myToken}
         global list_data0
         param1 = [{"deliveryCompany": "shunfengkaudi", "deliverySn": '', "orderId": list_data0['id']}]
-        post = request.post_request(url='http://192.168.60.132:8080/order/update/delivery',json = param1, headers=head2)
+        post = request.post_request(url=url+'/order/update/delivery',json = param1, headers=head2)
         delivery_res = post.json()
         print(delivery_res)
         assertions.assert_code(post.status_code, 200)
@@ -78,7 +78,7 @@ class TestShoppingTrolley(object):
         # head2 = {'Authorization': myToken}
         global list_data0
         param1 = {"ids": list_data0['id'], 'note': 'guanbi'}
-        post = request.post_request(url='http://192.168.60.132:8080/order/update/close',params = param1, headers=head2)
+        post = request.post_request(url=url+'/order/update/close',params = param1, headers=head2)
         close_res = post.text
         print(close_res)
         assertions.assert_code(post.status_code, 200)

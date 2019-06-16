@@ -1,11 +1,11 @@
 from functools import reduce
 # 冒泡排序一普通
 def buffersort(list1):
-    # 控制循环趟数
+    # 外循环控制循环趟数
     for i in range(len(list1)-1):
-        # 控制比较次数
+        # 内循环控制每趟的比较次数
         for j in range(len(list1)-i-1):
-            # 比较大小
+            # 比较大小并交换位置
             if list1[j] > list1[j+1]:
                 list1[j], list1[j+1] = list1[j+1], list1[j]
     return list1
@@ -68,7 +68,7 @@ def buffersort4(list1, comp = lambda x, y: x > y):
 # print(buffersort4(list1, lambda a, b: a > b))
 # print(buffersort4(list1, lambda a, b: len(a) > len(b)))
 if __name__ == '__main__':
-    list1 = [44,25,17,12,65,23,32,53]
+    list1 = [44, 25, 17, 12, 65, 23, 32, 53]
     cal = reduce(lambda x, y:x * y,[1,2,3,4,5],4)
     print(cal)
     pass

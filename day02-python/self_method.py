@@ -1,3 +1,4 @@
+import random
 # 内循环
 def list_bianli():
     for i in range(5):
@@ -101,6 +102,85 @@ def sum_test4(aint,bint):
         else:
             continue
     print(sum)
+# 给一个列表和目标值，找出列表中任意三个数相加等于目标值的三个数
+def solution(nums,target):
+    list2 = []
+    for i in range(0, len(nums) - 2):
+        for j in range(i+1, len(nums)-1):
+            for k in range(j+1,len(nums)):
+                if nums[i] + nums[j] + nums[k] == target:
+                    list = []
+                    list.append(nums[i])
+                    list.append(nums[j])
+                    list.append(nums[k])
+                    list.sort()
+                    list2.append(list)
+    print(list2)
+    # 去重
+    for i in list2:
+        while list2.count(i) > 1:
+            del list2[list2.index(i)]
+    print(list2)
+# 给一个列表和目标值，找出列表中任意二个数相加等于目标值的二个数的索引
+def solution2(nums,target):
+    list2 = []
+    for i in range(0, len(nums) - 1):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j]  == target:
+                 list = []
+                 list.append(i)
+                 list.append(j)
+                 list.sort()
+                 list2.append(list)
+    print(list2)
 
+
+# 打印出100以内所有的勾股数
+def gougu():
+    for i in range(1,100):
+        for j in range(i+1,100):
+            for k in range(j+1,100):
+                if i*i + j*j == k*k:
+                    print(i,j,k)
+
+# 更相减陨术  求出两个数a,b的最大公约数 : 用递归做
+def gongyue(a,b):
+    if a > b:
+        a = a - b
+    else:
+        b = b - a
+    if a == b:
+        return a
+    else:
+        return gongyue(a,b)
+
+ # 简单的生成器函数
+def my_gen():
+     n=1
+     print("first")
+     # yield区域
+     yield n
+
+     n+=1
+     print("second")
+     yield n
+
+     n+=1
+     print("third")
+     yield n
 if __name__ == '__main__':
-    sum_test4(10,10)
+    # l1 = ['b', 'c', 'd', 'b', 'c', 'a', 'a']
+    # l2 = list(set(l1))
+    # l2.sort(key=l1.index)
+    solution2([2,7,8,12],9)
+    # print(l2)
+    # list =(1, 3, 2, 6, 7, 9, 0, 4, 7, 5)
+    # solution(list,10)
+    # print(gongyue(27,18))
+
+    # list = [4,3,6,8,2,12,5,9]
+    # print(max(enumerate(list),key=lambda x : x[1]))
+    # for i in list2:
+    #     print(i)
+    # print(enumerate(list))
+    # print(list.index(max(list)), max(list))

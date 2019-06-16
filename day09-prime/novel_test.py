@@ -7,6 +7,7 @@ def get_novel_list():
     response.encoding = 'gbk'
     reg = r'<a target="_blank" href="(.*?)" class="l mr10"'
     html = response.text
+    # 返回了一个正则表达式匹配得到的列表组合
     return re.findall(reg,html)
 
 # 获取章节列表

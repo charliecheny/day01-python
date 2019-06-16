@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.common.keys import Keys
 
 
 def shot(func):
@@ -273,5 +273,66 @@ class baseUI():
         '''
         element = self.local_element(xpath)
         return element.text
+
+    @shot
+    def keys_enter(self, step, xpath):
+        '''
+        键盘操作 回车操作
+        :param step:操作步骤
+        :param xpath: xpath
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.ENTER)
+
+    @shot
+    def keys_back_space(self, step, xpath):
+        '''
+        键盘操作 删除最后一个字符
+        :param step:操作步骤
+        :param xpath: xpath
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.BACK_SPACE)
+
+    @shot
+    def keys_tab(self, step, xpath):
+        '''
+        键盘操作 tab键
+        :param step:操作步骤
+        :param xpath: xpath
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.TAB)
+
+    @shot
+    def keys_space(self, step, xpath):
+        '''
+        键盘操作 空格键
+        :param step:操作步骤
+        :param xpath: xpath
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.SPACE)
+
+    @shot
+    def keys_escape(self, step, xpath):
+        '''
+        键盘操作 回退键
+        :param step:操作步骤
+        :param xpath: xpath
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.ESCAPE)
+
+    @shot
+    def keys_ctrl(self, step, xpath, letter):
+        '''
+        键盘操作 ctrl加字母
+        :param step:操作步骤
+        :param xpath: xpath
+        :param letter: 键盘按住的字母
+        '''
+        element = self.local_element(xpath)
+        element.send_keys(Keys.CONTROL, letter)
 
 

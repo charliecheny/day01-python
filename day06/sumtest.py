@@ -41,6 +41,8 @@ class SumTest():
             print(self.sum1)
             print(sum(range(self.para0+1,self.para1+1,2)))
 
+
+
 # 递归求和
 def test_sum(num):
     if num >=1:
@@ -50,4 +52,5 @@ def test_sum(num):
     return res
 
 if __name__ == '__main__':
+
     pass

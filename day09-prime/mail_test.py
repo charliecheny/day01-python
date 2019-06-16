@@ -34,7 +34,7 @@ wd.maximize_window()
 # 切换iframe
 login_iframe = wd.find_element_by_id('login_frame')
 
-wd.switch_to_frame(login_iframe)
+wd.switch_to.frame(login_iframe)
 # 点击账号密码登录
 # wd.find_element_by_id('switcher_plogin').click()
 wd.find_element_by_id('u').send_keys('1475323953')
